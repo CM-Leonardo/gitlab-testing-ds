@@ -14,9 +14,15 @@ const projeto = {
     descricao: faker.random.words(5)
 }
 
+const issue = {
+    nome: faker.random.words(1),
+    descricao: faker.random.words(3)
+}
+
 export {
     USER, 
     PASSWORD, 
     ACCESS_TOKEN,
-    projeto
+    projeto,
+    issue
 }
