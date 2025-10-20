@@ -1,4 +1,7 @@
+
 import { ACCESS_TOKEN } from "../utils/envVariaveis"
+
+=======
 
 //função cria projeto
 export function criaProjeto(nome, descricao) {
@@ -7,6 +10,11 @@ export function criaProjeto(nome, descricao) {
         .eq(0)
         .should('be.visible')
         .type(nome)
+=======
+                .eq(0)
+                .should('be.visible')
+                .type(nome)
+
     cy.get('textarea[id="project_description"]')
         .eq(0)
         .should('be.visible')
@@ -20,18 +28,28 @@ export function criaProjeto(nome, descricao) {
 //função valida a criação do projeto
 export function validaCriacaoProjeto(nome, descricao) {
     cy.get('.flash-notice')
+
         .should('contain', `Project '${nome}' was successfully created.`)
     cy.get('.home-panel-title')
         .should('contain', nome)
     cy.get('p[dir="auto"]')
         .should('contain', descricao)
+=======
+            .should('contain', `Project '${nome}' was successfully created.`)
+        cy.get('.home-panel-title').should('contain', nome)
+        cy.get('p[dir="auto"]').should('contain', descricao)
+
 }
 
 //função cria issue
 export function criaIssue(nome, descricao) {
     cy.get('.shortcuts-issues')
+
         .should('be.visible')
         .click()
+=======
+            .should('be.visible')
+            .click()
     cy.get('#new_issue_link')
         .should('be.visible')
         .click()
@@ -52,6 +70,7 @@ export function validaCriacaoIssue(nome, descricao){
         .should('contain', nome)
     cy.get('[class="md"]')
         .should('contain', descricao)
+
 }
 
 //função cria group
@@ -82,4 +101,6 @@ export function validaCriacaoGroup(nome) {
         .should('contain.text', `Group '${nome}' was successfully created.`)
     cy.get('.home-panel-title')
         .should('contain.text', nome)
+=======
+
 }
