@@ -14,9 +14,23 @@ const projeto = {
     descricao: faker.random.words(5)
 }
 
+const issue = {
+    nome: faker.random.words(1),
+    descricao: faker.random.words(3)
+}
+
+const group = {
+    nome: faker.random.words(1),
+    url: faker.random.words(1),
+    file: 'cypress/fixtures/files/icon.png'
+
+}
+
 export {
     USER, 
     PASSWORD, 
     ACCESS_TOKEN,
-    projeto
+    projeto,
+    issue,
+    group
 }
