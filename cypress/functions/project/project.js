@@ -1,10 +1,20 @@
+
+import { ACCESS_TOKEN } from "../utils/envVariaveis"
+
+=======
+
 //função cria projeto
 export function criaProjeto(nome, descricao) {
     cy.visit('/projects/new')
     cy.get('input[id="project_name"]')
+        .eq(0)
+        .should('be.visible')
+        .type(nome)
+=======
                 .eq(0)
                 .should('be.visible')
                 .type(nome)
+
     cy.get('textarea[id="project_description"]')
         .eq(0)
         .should('be.visible')
@@ -18,14 +28,26 @@ export function criaProjeto(nome, descricao) {
 //função valida a criação do projeto
 export function validaCriacaoProjeto(nome, descricao) {
     cy.get('.flash-notice')
+
+        .should('contain', `Project '${nome}' was successfully created.`)
+    cy.get('.home-panel-title')
+        .should('contain', nome)
+    cy.get('p[dir="auto"]')
+        .should('contain', descricao)
+=======
             .should('contain', `Project '${nome}' was successfully created.`)
         cy.get('.home-panel-title').should('contain', nome)
         cy.get('p[dir="auto"]').should('contain', descricao)
+
 }
 
 //função cria issue
 export function criaIssue(nome, descricao) {
     cy.get('.shortcuts-issues')
+
+        .should('be.visible')
+        .click()
+=======
             .should('be.visible')
             .click()
     cy.get('#new_issue_link')
@@ -48,4 +70,37 @@ export function validaCriacaoIssue(nome, descricao){
         .should('contain', nome)
     cy.get('[class="md"]')
         .should('contain', descricao)
+
+}
+
+//função cria group
+export function criaGroup(nome, url, file) {
+    cy.visit('/dashboard/groups')
+        cy.get('[class="btn btn-success"]')
+            .should('be.visible')
+            .click()
+        
+        cy.get('[id="group_name"]')
+            .should('be.visible')
+            .type(nome)
+        cy.get('[id="group_path"]')
+            .should('be.visible')
+            .clear()
+            .type(url)
+        cy.get('input#group_avatar')
+            .selectFile(file, { force:true })
+        cy.get('[class="file_name js-avatar-filename"]')
+            .contains('icon.png')
+        cy.get('[type="submit"]')
+            .should('be.visible')
+            .click()
+}
+
+export function validaCriacaoGroup(nome) {
+    cy.get('[class="flash-notice mb-2"]')
+        .should('contain.text', `Group '${nome}' was successfully created.`)
+    cy.get('.home-panel-title')
+        .should('contain.text', nome)
+=======
+
 }
