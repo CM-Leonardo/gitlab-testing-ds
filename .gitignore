@@ -1,4 +1,5 @@
 # Ignora o arquivo cypress.env.json 
 cypress.env.json
 
+# Ignora os arquivos do node_modules
 node_modules

@@ -1,16 +1,18 @@
 import { USER, PASSWORD, issue } from "../../functions/utils/envVariaveis"
 import { login } from "../../functions/utils/utils"
 import { criaIssueAPI } from "../../functions/api/api-comandos"
-import {  } from "../../functions/project/project"
+import { validaCriacaoIssue } from "../../functions/project/project"
 
 describe('Deve criar uma issue via API', () => {
-   beforeEach(() => {
-        login(USER, PASSWORD)
-   })
-
     it('Deve criar uma issue via API e acessa-lo via front-end', () => {
-        const nomeIssue = issue.nome 
+        const nomeIssue = issue.nome
         const descricaoIssue = issue.descricao
-        criaIssueAPI(nomeIssue, descricaoIssue) //criação de issue OK ---> acessar issue e validar no front FAZER
+
+        //função cria issue via API
+        criaIssueAPI(nomeIssue, descricaoIssue).then((issue) => {
+            login(USER, PASSWORD) //faz login para acessar o front 
+            cy.visit(issue.body.web_url) //pega a url a partir do response body e acessa a issue criado
+            validaCriacaoIssue(nomeIssue, descricaoIssue)// valida a criação
+        })
     })
 })

@@ -1,6 +1,3 @@
-
-import { ACCESS_TOKEN } from "../utils/envVariaveis"
-
 //função cria projeto
 export function criaProjeto(nome, descricao) {
     cy.visit('/projects/new')
@@ -19,8 +16,8 @@ export function criaProjeto(nome, descricao) {
 }
 
 //função valida a criação do projeto
-export function validaCriacaoProjeto(nome, descricao, api = false) {
-    if(api === true) {
+export function validaCriacaoProjeto(nome, descricao, api = false) { //parametro api adicionado. Quando criamos um projeto via api, a mensagem de "successfully created"
+    if(api === true) {                                              // não é exibida, e isso quebra o teste. Criei uma validação para que quando for via API, a validação seja diferente 
         cy.get('.home-panel-title')
             .should('contain', nome)
         cy.get('p[dir="auto"]')
@@ -62,7 +59,9 @@ export function validaCriacaoIssue(nome, descricao){
         .should('contain', nome)
     cy.get('[class="md"]')
         .should('contain', descricao)
-
+    cy.get('[title="Close issue"]')
+        .eq(1)
+        .should('be.visible')
 }
 
 // ----- GROUP ----- //
@@ -70,30 +69,35 @@ export function validaCriacaoIssue(nome, descricao){
 //função cria group
 export function criaGroup(nome, url, file) {
     cy.visit('/dashboard/groups')
-        cy.get('[class="btn btn-success"]')
-            .should('be.visible')
-            .click()
-        
-        cy.get('[id="group_name"]')
-            .should('be.visible')
-            .type(nome)
-        cy.get('[id="group_path"]')
-            .should('be.visible')
-            .clear()
-            .type(url)
-        cy.get('input#group_avatar')
-            .selectFile(file, { force:true })
-        cy.get('[class="file_name js-avatar-filename"]')
-            .contains('icon.png')
-        cy.get('[type="submit"]')
-            .should('be.visible')
-            .click()
+    cy.get('[class="btn btn-success"]')
+        .should('be.visible')
+        .click()
+    cy.get('[id="group_name"]')
+        .should('be.visible')
+        .type(nome)
+    cy.get('[id="group_path"]')
+        .should('be.visible')
+        .clear()
+        .type(url)
+    cy.get('input#group_avatar')
+        .selectFile(file, { force:true })
+    cy.get('[class="file_name js-avatar-filename"]')
+        .contains('icon.png')
+    cy.get('[type="submit"]')
+        .should('be.visible')
+        .click()
 }
 
-export function validaCriacaoGroup(nome) {
-    cy.get('[class="flash-notice mb-2"]')
-        .should('contain.text', `Group '${nome}' was successfully created.`)
-    cy.get('.home-panel-title')
-        .should('contain.text', nome)
-
+//validação de ciaação via API adicionada aqui tambe. Mais informações consultar a função validaCriacaoProjeto()
+export function validaCriacaoGroup(nome, path, api = false) {
+    if( api === true) {
+        cy.get('.home-panel-title')
+            .should('contain.text', nome)
+        cy.url().should('include', path)
+    } else {
+        cy.get('[class="flash-notice mb-2"]')
+            .should('contain.text', `Group '${nome}' was successfully created.`)
+        cy.get('.home-panel-title')
+            .should('contain.text', nome)
+    }
 }

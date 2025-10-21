@@ -30,9 +30,9 @@ export function deleteProjetos() {
 
 // ----- ISSUES ----- //
 
-export function criaIssueAPI(nome, descricao) { //criação de issue OK ---> acessar issue e validar no front FAZER
-     criaProjetoAPI(projeto.nome, projeto.descricao).then(response => {
-        cy.request({
+export function criaIssueAPI(nome, descricao) {
+     return criaProjetoAPI(projeto.nome, projeto.descricao).then(response => {
+            cy.request({
             method: 'POST',
             url: `/api/v4/projects/${response.body.id}/issues`,
             body: {
@@ -44,3 +44,16 @@ export function criaIssueAPI(nome, descricao) { //criação de issue OK ---> ace
     })
 }
 
+// ---- GROUP ---- ///
+
+export function criaGroupAPI(nome, path) {
+    return cy.request({
+        method: 'POST',
+        url: '/api/v4/groups',
+        body: {
+            name: nome,
+            path: path
+        },
+        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+    })
+}

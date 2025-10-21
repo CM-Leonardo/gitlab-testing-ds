@@ -35,6 +35,5 @@ export {
     ACCESS_TOKEN,
     projeto,
     issue,
-    group,
-    issue
+    group
 }
