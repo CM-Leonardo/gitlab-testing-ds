@@ -1,3 +1,4 @@
+
 import { ACCESS_TOKEN } from "../utils/envVariaveis"
 
 //função cria projeto
@@ -7,6 +8,10 @@ export function criaProjeto(nome, descricao) {
         .eq(0)
         .should('be.visible')
         .type(nome)
+                .eq(0)
+                .should('be.visible')
+                .type(nome)
+
     cy.get('textarea[id="project_description"]')
         .eq(0)
         .should('be.visible')
@@ -41,6 +46,8 @@ export function criaIssue(nome, descricao) {
     cy.get('.shortcuts-issues')
         .should('be.visible')
         .click()
+            .should('be.visible')
+            .click()
     cy.get('#new_issue_link')
         .should('be.visible')
         .click()
@@ -61,6 +68,7 @@ export function validaCriacaoIssue(nome, descricao){
         .should('contain', nome)
     cy.get('[class="md"]')
         .should('contain', descricao)
+
 }
 
 // ----- GROUP ----- //
@@ -93,4 +101,5 @@ export function validaCriacaoGroup(nome) {
         .should('contain.text', `Group '${nome}' was successfully created.`)
     cy.get('.home-panel-title')
         .should('contain.text', nome)
+
 }
