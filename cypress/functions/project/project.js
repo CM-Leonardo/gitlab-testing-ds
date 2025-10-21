@@ -18,14 +18,23 @@ export function criaProjeto(nome, descricao) {
 }
 
 //função valida a criação do projeto
-export function validaCriacaoProjeto(nome, descricao) {
-    cy.get('.flash-notice')
-        .should('contain', `Project '${nome}' was successfully created.`)
-    cy.get('.home-panel-title')
-        .should('contain', nome)
-    cy.get('p[dir="auto"]')
-        .should('contain', descricao)
+export function validaCriacaoProjeto(nome, descricao, api = false) {
+    if(api === true) {
+        cy.get('.home-panel-title')
+            .should('contain', nome)
+        cy.get('p[dir="auto"]')
+            .should('contain', descricao)
+    }else {
+        cy.get('.flash-notice')
+            .should('contain', `Project '${nome}' was successfully created.`)
+        cy.get('.home-panel-title')
+            .should('contain', nome)
+        cy.get('p[dir="auto"]')
+            .should('contain', descricao)
+    }
 }
+
+// ----- ISSUES ----- //
 
 //função cria issue
 export function criaIssue(nome, descricao) {
@@ -53,6 +62,8 @@ export function validaCriacaoIssue(nome, descricao){
     cy.get('[class="md"]')
         .should('contain', descricao)
 }
+
+// ----- GROUP ----- //
 
 //função cria group
 export function criaGroup(nome, url, file) {
