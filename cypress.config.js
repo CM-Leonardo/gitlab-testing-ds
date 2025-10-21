@@ -8,5 +8,9 @@ module.exports = defineConfig({
     },
     baseUrl: 'http://localhost',
   },
+   env: {
+      hideCredentials: true,
+      requestMode: true,
+    },
    video: false,
 });

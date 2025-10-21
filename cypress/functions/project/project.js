@@ -1,8 +1,6 @@
 
 import { ACCESS_TOKEN } from "../utils/envVariaveis"
 
-=======
-
 //função cria projeto
 export function criaProjeto(nome, descricao) {
     cy.visit('/projects/new')
@@ -10,7 +8,6 @@ export function criaProjeto(nome, descricao) {
         .eq(0)
         .should('be.visible')
         .type(nome)
-=======
                 .eq(0)
                 .should('be.visible')
                 .type(nome)
@@ -26,28 +23,29 @@ export function criaProjeto(nome, descricao) {
 }
 
 //função valida a criação do projeto
-export function validaCriacaoProjeto(nome, descricao) {
-    cy.get('.flash-notice')
-
-        .should('contain', `Project '${nome}' was successfully created.`)
-    cy.get('.home-panel-title')
-        .should('contain', nome)
-    cy.get('p[dir="auto"]')
-        .should('contain', descricao)
-=======
+export function validaCriacaoProjeto(nome, descricao, api = false) {
+    if(api === true) {
+        cy.get('.home-panel-title')
+            .should('contain', nome)
+        cy.get('p[dir="auto"]')
+            .should('contain', descricao)
+    }else {
+        cy.get('.flash-notice')
             .should('contain', `Project '${nome}' was successfully created.`)
-        cy.get('.home-panel-title').should('contain', nome)
-        cy.get('p[dir="auto"]').should('contain', descricao)
-
+        cy.get('.home-panel-title')
+            .should('contain', nome)
+        cy.get('p[dir="auto"]')
+            .should('contain', descricao)
+    }
 }
+
+// ----- ISSUES ----- //
 
 //função cria issue
 export function criaIssue(nome, descricao) {
     cy.get('.shortcuts-issues')
-
         .should('be.visible')
         .click()
-=======
             .should('be.visible')
             .click()
     cy.get('#new_issue_link')
@@ -72,6 +70,8 @@ export function validaCriacaoIssue(nome, descricao){
         .should('contain', descricao)
 
 }
+
+// ----- GROUP ----- //
 
 //função cria group
 export function criaGroup(nome, url, file) {
@@ -101,6 +101,5 @@ export function validaCriacaoGroup(nome) {
         .should('contain.text', `Group '${nome}' was successfully created.`)
     cy.get('.home-panel-title')
         .should('contain.text', nome)
-=======
 
 }

@@ -34,10 +34,10 @@ export function login(user, password, cacheSession = true) {
 //COMANDO LOGOUT -> 
 export function logout() {
     cy.get('.header-user-avatar')
-            .should('be.visible')
-            .click()
-            cy.contains('Sign out')
-            .should('be.visible')
-            .click()
+        .should('be.visible')
+        .click()
+    cy.contains('Sign out')
+        .should('be.visible')
+        .click()
 
 }
