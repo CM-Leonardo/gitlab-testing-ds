@@ -57,3 +57,27 @@ export function criaGroupAPI(nome, path) {
         headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
     })
 }
+
+// --- UTILS --- ///
+
+export function validaChamadaAPI(name, descricao, response, tipo){
+    if(tipo === 1) { //valida criação projeto via API
+        expect(response.status).to.equal(201)
+        expect(response.body.name).to.equal(name)
+        expect(response.body.description).to.equal(descricao)
+    } 
+    else if(tipo === 2) { //valida criação issue via api
+        expect(response.status).to.equal(201)
+        expect(response.body.title).to.equal(name)
+        expect(response.body.description).to.equal(descricao)
+    } 
+    else if (tipo === 3) { // valida criação group via api
+        expect(response.status).to.equal(201)
+        expect(response.body.name).to.equal(name)
+        expect(response.body.path).to.equal(descricao)
+    }
+}
+
+
+        
+

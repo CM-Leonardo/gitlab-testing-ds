@@ -6,6 +6,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       
     },
+    experimentalRunAllSpecs: true,
     baseUrl: 'http://localhost',
   },
    env: {

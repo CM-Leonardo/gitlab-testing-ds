@@ -1,10 +1,10 @@
-import { PASSWORD, USER, issue } from "../../functions/gui/utils/envVariaveis"
+import { PASSWORD, USER, issue, projeto } from "../../functions/gui/utils/envVariaveis"
 import { login } from "../../functions/gui/utils/utils"
 import { criaIssue, validaCriacaoIssue } from "../../functions/gui/project/project"
 import { deleteProjetos, criaProjetoAPI } from "../../functions/api/api"
 
 
-describe('Criando uma issue via Interface de Usuário', () => {
+describe('Criando uma Issue via Interface de Usuário', () => {
     beforeEach(() => {
         deleteProjetos()
         login(USER, PASSWORD)
@@ -14,7 +14,7 @@ describe('Criando uma issue via Interface de Usuário', () => {
         })
     })
 
-    it('Deve acessar o projeto e criar uma issue', () => {
+    it('Deve acessar o sistema, entrar no projeto e criar uma issue.', () => {
         criaIssue(issue.nome, issue.descricao)
         validaCriacaoIssue(issue.nome, issue.descricao)
     })

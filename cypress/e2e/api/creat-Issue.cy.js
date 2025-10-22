@@ -1,7 +1,7 @@
-import { USER, PASSWORD, issue } from "../../functions/utils/envVariaveis"
-import { login } from "../../functions/utils/utils"
-import { criaIssueAPI } from "../../functions/api/api-comandos"
-import { validaCriacaoIssue } from "../../functions/project/project"
+import { USER, PASSWORD, issue } from "../../functions/gui/utils/envVariaveis"
+import { login } from "../../functions/gui/utils/utils"
+import { criaIssueAPI, validaChamadaAPI } from "../../functions/api/api"
+import { validaCriacaoIssue } from "../../functions/gui/project/project"
 
 describe('Deve criar uma issue via API', () => {
     it('Cria uma Issue via API e valida acessando o front-end.', () => {
@@ -10,7 +10,9 @@ describe('Deve criar uma issue via API', () => {
 
         //função cria issue via API
         criaIssueAPI(nomeIssue, descricaoIssue).then((issue) => {
-            login(USER, PASSWORD) //faz login para acessar o front 
+           validaChamadaAPI(nomeIssue, descricaoIssue, issue, 2)
+            
+           login(USER, PASSWORD) //faz login para acessar o front 
             cy.visit(issue.body.web_url) //pega a url a partir do response body e acessa a issue criado
             validaCriacaoIssue(nomeIssue, descricaoIssue)// valida a criação
         })
