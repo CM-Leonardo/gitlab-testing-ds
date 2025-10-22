@@ -1,9 +1,12 @@
 import { USER, PASSWORD, projeto } from "../../functions/gui/utils/envVariaveis"
 import { login } from "../../functions/gui/utils/utils"
-import { criaProjetoAPI, validaChamadaAPI } from "../../functions/api/api"
+import { criaProjetoAPI, deleteProjetos, validaChamadaAPI } from "../../functions/api/api"
 import { validaCriacaoProjeto } from "../../functions/gui/project/project"
 
 describe('Deve criar um projeto via API', () => {
+    beforeEach(() => {
+        deleteProjetos()
+    })
     it('Cria um Projeto via API e valida acessando o front-end.', () => {
         const nomeProjeto = projeto.nome
         const descricaoProjeto = projeto.descricao

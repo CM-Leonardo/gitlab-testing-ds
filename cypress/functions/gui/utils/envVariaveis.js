@@ -26,6 +26,22 @@ const group = {
     file: 'cypress/fixtures/files/icon.png'
 }
 
+const label = {
+    title: faker.random.words(1),
+    descricao: faker.random.words(2),
+    color: '#D10069'
+}
+
+const file = {
+    nome: faker.random.words(1),
+    descricao: faker.random.words(2),
+   
+}
+
+const nomeBranch = faker.random.words(1)
+
+const titleMerge = faker.random.words(1)
+
 
 
 export {
@@ -34,5 +50,9 @@ export {
     ACCESS_TOKEN,
     projeto,
     issue,
-    group
+    group,
+    label,
+    file,
+    nomeBranch,
+    titleMerge
 }

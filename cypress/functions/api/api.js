@@ -1,5 +1,4 @@
-import { ACCESS_TOKEN, projeto } from "../gui/utils/envVariaveis"
-
+import { ACCESS_TOKEN, group, projeto } from "../gui/utils/envVariaveis"
 
 export function criaProjetoAPI(nome, descricao) {
    return cy.request({
@@ -23,6 +22,20 @@ export function deleteProjetos() {
         resp.body.forEach(project => cy.request({
             method: 'DELETE',
             url: `/api/v4/projects/${project.id}`,
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` }, 
+        }))
+    })
+}
+
+export function deleteGroups() { 
+    cy.request({
+        method: 'GET',
+        url: '/api/v4/groups/',
+        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+    }).then(resp => {
+        resp.body.forEach(group => cy.request({
+            method: 'DELETE',
+            url: `/api/v4/groups/${group.id}`,
             headers: { Authorization: `Bearer ${ACCESS_TOKEN}` }, 
         }))
     })
