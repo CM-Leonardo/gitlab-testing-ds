@@ -1,5 +1,5 @@
-import { USER, PASSWORD } from "../../functions/utils/envVariaveis"; //Importanto variaveis para uso
-import { login } from "../../functions/utils/utils"
+import { USER, PASSWORD } from "../../functions/gui/utils/envVariaveis";
+import { login } from "../../functions/gui/utils/utils";
 
 describe('Login com credenciais invalidas', () => {
     it('Deve tentar logar no sistema com USER_NAME incorreto', () => { 

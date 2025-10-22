@@ -1,6 +1,6 @@
-import { group, PASSWORD, USER } from "../../functions/utils/envVariaveis"
-import { login } from "../../functions/utils/utils"
-import { criaGroup, validaCriacaoGroup } from "../../functions/project/project"
+import { group, PASSWORD, USER } from "../../functions/gui/utils/envVariaveis"
+import { login } from "../../functions/gui/utils/utils"
+import { criaGroup, validaCriacaoGroup } from "../../functions/gui/project/project"
 import { deleteProjetos } from "../../functions/api/api"
 
 describe('Criando uma grupo via Interface de Usuário', () => {

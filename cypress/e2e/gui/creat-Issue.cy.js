@@ -1,7 +1,8 @@
-import { criaIssue, validaCriacaoIssue } from "../../functions/project/project"
+import { PASSWORD, USER, issue } from "../../functions/gui/utils/envVariaveis"
+import { login } from "../../functions/gui/utils/utils"
+import { criaIssue, validaCriacaoIssue } from "../../functions/gui/project/project"
 import { deleteProjetos, criaProjetoAPI } from "../../functions/api/api"
-import { USER, PASSWORD, projeto, issue} from "../../functions/utils/envVariaveis"
-import { login } from "../../functions/utils/utils"
+
 
 describe('Criando uma issue via Interface de Usuário', () => {
     beforeEach(() => {
