@@ -4,19 +4,15 @@ import { USER, PASSWORD, projeto } from "../../functions/utils/envVariaveis"
 import { login } from "../../functions/utils/utils"
 
 describe('Deve criar um projeto via API', () => {
-
-   beforeEach(() => {
-        login(USER, PASSWORD)
-   })
-
-    it('Deve criar um projeto via API e acessa-lo via front-end', () => {
+    it('Cria um Projeto via API e valida acessando o front-end.', () => {
         const nomeProjeto = projeto.nome
         const descricaoProjeto = projeto.descricao
-        criaProjetoAPI(nomeProjeto, descricaoProjeto).then((response) => { 
 
-            const link = response.body.path
-            cy.visit(`/root/${link}`)
-            validaCriacaoProjeto(nomeProjeto, descricaoProjeto, true)
+        //função cria projeto via API
+        criaProjetoAPI(nomeProjeto, descricaoProjeto).then((project) => { 
+            login(USER, PASSWORD) //faz login para acessar o front 
+            cy.visit(project.body.web_url) //pega a url a partir do response body e acessa o projeto criado
+            validaCriacaoProjeto(nomeProjeto, descricaoProjeto, true) // valida a criação
         })
     })
 })
