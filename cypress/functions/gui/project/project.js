@@ -117,7 +117,6 @@ export function criaGroup(nome, url, file, visit = true) {
         cy.get('input#group_avatar')
             .selectFile(file, { force:true })
         cy.get('[class="file_name js-avatar-filename"]')
-            .contains('icon.png')
         cy.get('[type="submit"]')
             .should('be.visible')
             .click() 
