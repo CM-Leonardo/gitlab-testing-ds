@@ -23,7 +23,8 @@ const issue = {
 const group = {
     nome: faker.random.words(1),
     url: faker.random.words(1),
-    file: 'cypress/fixtures/files/icon.png'
+    file: 'cypress/fixtures/files/icon.png',
+    fileTesteGeral: 'cypress/fixtures/files/iconGrupo.jpg'
 }
 
 const label = {

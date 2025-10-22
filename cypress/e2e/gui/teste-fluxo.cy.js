@@ -21,14 +21,9 @@ describe('Testes Gerais - Validando fluxos', () => {
     beforeEach(() => {
         login(USER, PASSWORD)
     })
-    after(() => {
-        deleteProjetos()
-        deleteGroups()
-    })
-
     it('Deve acessar o sistema, criar um GRUPO, dentro do grupo deve criar um PROJETO, dentro do projeto deve criar uma ISSUE, dentro da issue deve criar uma LABEL', () => {
         cy.visit('/')
-        criaGroup(nomeGroup, pathGroup, group.file, false)
+        criaGroup(nomeGroup, pathGroup, group.fileTesteGeral, false)
         validaCriacaoGroup(nomeGroup)
         criaProjeto(nomeProjeto, descricaoProjeto, false)
         validaCriacaoProjeto(nomeProjeto, descricaoProjeto)    

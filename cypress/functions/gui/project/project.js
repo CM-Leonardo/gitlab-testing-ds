@@ -192,6 +192,7 @@ export function validaCriaLabel(title, descricao, color) {
 
 export function criaFile(nome, descricao) {
     cy.get('[class="project-name"]')
+        .eq(0)
         .should('be.visible')
         .click()
     cy.get('[class="breadcrumb-item-text js-breadcrumb-item-text"]')
@@ -240,6 +241,7 @@ export function criaBranch(nome){
 }
 
 export function criaMerge(title){
+    cy.wait(2000)
     cy.get('[title="New merge request"]')
             .should('be.visible')
             .click()
