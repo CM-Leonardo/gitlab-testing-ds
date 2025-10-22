@@ -1,5 +1,5 @@
-import { login, logout } from "../../functions/utils/utils"
-import { PASSWORD, USER } from "../../functions/utils/envVariaveis"
+import { login, logout } from "../../functions/gui/utils/utils"
+import { PASSWORD, USER } from "../../functions/gui/utils/envVariaveis"
 
 describe('Logout no sistema', () => {
     beforeEach(() => {

@@ -4,7 +4,7 @@ import { criaIssueAPI } from "../../functions/api/api-comandos"
 import { validaCriacaoIssue } from "../../functions/project/project"
 
 describe('Deve criar uma issue via API', () => {
-    it('Deve criar uma issue via API e acessa-lo via front-end', () => {
+    it('Cria uma Issue via API e valida acessando o front-end.', () => {
         const nomeIssue = issue.nome
         const descricaoIssue = issue.descricao
 

@@ -1,5 +1,5 @@
 import { criaIssue, validaCriacaoIssue } from "../../functions/project/project"
-import { deleteProjetos, criaProjetoAPI } from "../../functions/api/api-comandos"
+import { deleteProjetos, criaProjetoAPI } from "../../functions/api/api"
 import { USER, PASSWORD, projeto, issue} from "../../functions/utils/envVariaveis"
 import { login } from "../../functions/utils/utils"
 

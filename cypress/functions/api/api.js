@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN, projeto } from "../utils/envVariaveis"
+import { ACCESS_TOKEN, projeto } from "../gui/utils/envVariaveis"
 
 
 export function criaProjetoAPI(nome, descricao) {

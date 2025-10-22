@@ -1,11 +1,10 @@
-import { group, PASSWORD, USER } from "../../functions/utils/envVariaveis"
-import { criaGroupAPI } from "../../functions/api/api-comandos"
-import { login } from "../../functions/utils/utils"
-import { validaCriacaoGroup } from "../../functions/project/project"
+import { group, PASSWORD, USER } from "../../functions/gui/utils/envVariaveis"
+import { criaGroupAPI } from "../../functions/api/api"
+import { login } from "../../functions/gui/utils/utils"
+import { validaCriacaoGroup } from "../../functions/gui/project/project"
 
 describe('Validando criação de Group via API', () => {
-
-    it('Valida a criação de Group via API pelo front-end', () => {
+    it('Cria uma Group via API e valida acessando o front-end.', () => {
         const nomeGroup = group.nome
         const pathGroup = group.url
 

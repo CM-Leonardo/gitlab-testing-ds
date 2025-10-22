@@ -4,7 +4,7 @@ import { USER, PASSWORD, projeto } from "../../functions/utils/envVariaveis"
 import { login } from "../../functions/utils/utils"
 
 describe('Deve criar um projeto via API', () => {
-    it('Deve criar um projeto via API e acessa-lo via front-end', () => {
+    it('Cria um Projeto via API e valida acessando o front-end.', () => {
         const nomeProjeto = projeto.nome
         const descricaoProjeto = projeto.descricao
 
