@@ -1,9 +1,12 @@
 import { USER, PASSWORD, issue } from "../../functions/gui/utils/envVariaveis"
 import { login } from "../../functions/gui/utils/utils"
-import { criaIssueAPI, validaChamadaAPI } from "../../functions/api/api"
+import { criaIssueAPI, deleteProjetos, validaChamadaAPI } from "../../functions/api/api"
 import { validaCriacaoIssue } from "../../functions/gui/project/project"
 
 describe('Deve criar uma issue via API', () => {
+    beforeEach(() => {
+        deleteProjetos()
+    })
     it('Cria uma Issue via API e valida acessando o front-end.', () => {
         const nomeIssue = issue.nome
         const descricaoIssue = issue.descricao
